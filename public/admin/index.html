@@ -6,6 +6,7 @@
      <script src="/bower_components/angular/angular.min.js"></script>
     <script src="/bower_components/angular-animate/angular-animate.min.js"></script>
     <script src="/bower_components/angular-touch/angular-touch.min.js"></script>
+    <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
     
 
     <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
@@ -29,18 +30,18 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse" uib-collapse="isNavCollapsed">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Dashboard</a></li>
-            <li><a href="#about">Pending Actions</a></li>
+            <li class="active"><a   ui-sref="dash" >Dashboard</a></li>
+            <li><a  ui-sref="pending">Pending Actions</a></li>
             <li class="dropdown" uib-dropdown>
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"   uib-dropdown-toggle>Dropdown <span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"   uib-dropdown-toggle>Store Manager <span class="caret"></span></a>
               <ul class="dropdown-menu" uib-dropdown-menu role="menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
+                <li><a  ui-sref="stockcreate">Stock Creation</a></li>
+                <li><a  ui-sref="stockentry">Stock Entry</a></li>
                 <li role="separator" class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li>
+                <li><a  ui-sref="itemoffer">Itme Offer Entry</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a ui-sref="globaloffer">Global Offers  </a></li>
+                <li><a  ui-sref="slide">Slides Manager</a></li>
               </ul>
             </li>
           </ul>
@@ -51,7 +52,7 @@
     
     
     <div class="row">
-        
+        <ui-view></ui-view>
     </div>
 </div>
 </body>

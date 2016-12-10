@@ -1,1 +1,76 @@
-<h1>Stock Create Page</h1>
+<div class="row" ng-show="catView">
+
+    <div class="col-sm-6 col-md-4">
+        <span class="btn glyphicon glyphicon-remove-circle  pull-right" ng-click="iconClick('cat')"></span>
+        <h3>Categoyr</h3> 
+    <form>
+   <div class="form-group">
+    <label for="categoryname">Category Name</label>
+    <input type="text" class="form-control" id="categoryname" ng-model="category.name" placeholder="Category">
+  </div>
+  <div class="form-group">
+    <label for="cetegorydesc">Description</label>
+    <input type="text" class="form-control" id="cetegorydesc" ng-model="category.desc" placeholder="Description">
+  </div>
+
+
+  <button  class="btn btn-default" ng-click="AddCategory();">Save</button>
+</form> 
+<!--        {{categories|json}}-->
+    </div>
+</div>
+
+<div class="row" ng-show="stockView">
+<h3>Stock Item <span class="glyphicon glyphicon-th-list btn" ng-click="iconClick('si')"></span> </h3>
+    <div class="col-sm-6 col-md-4">
+      <form>
+        <div class="form-group">
+            <label for="categoryname">Category Name  <span class="glyphicon glyphicon-plus-sign" ng-click="iconClick('catp')"></span></label>
+            <select class="form-control" ng-model="stock.category">
+                <option ng-repeat="c in categories">{{c.name}}</option>
+            </select>
+           
+          </div>
+        <div class="form-group">
+            <label for="stockname">Stock item Name</label>
+            <input type="text" class="form-control" id="stockname" ng-model="stock.stockname" placeholder="Stock Name">
+        </div>
+        <div class="form-group">
+            <label for="stockdesc">Stock Description</label>
+            <input type="text" class="form-control" id="stockdesc" ng-model="stock.desc" placeholder="Description">
+        </div>
+          <div class="form-group">
+            <label for="stockmrp">MRP/ Market Price</label>
+            <input type="number" class="form-control" id="stockmrp" ng-model="stock.mrp" placeholder="M.R.P">
+        </div>
+        <div class="form-group">
+            <label for="stockrate">Retail / Selling Price</label>
+            <input type="number" class="form-control" id="stockrate" ng-model="stock.rate" placeholder="Rate">
+        </div>
+           <button  class="btn btn-default" ng-click="saveStockitem();">save</button>
+        </form> 
+    </div>
+</div>
+<div class="row" ng-show="stockListView" ng-click="iconClick('sl')">
+    <h3>Stock Item List<span class="btn glyphicon glyphicon-plus-sign"></span> </h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Category</th>
+                <th>Stock Item</th>
+                <th>Description</th>
+                <th>MRP</th>
+                <th>Rate</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="si in stocks">
+                <td>{{si.category}}</td>
+                <td>{{si.stockname}}</td>
+                <td>{{si.desc}}</td>
+                <td>{{si.mrp}}</td>
+                <td>{{si.rate}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

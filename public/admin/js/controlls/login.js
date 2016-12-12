@@ -15,4 +15,6 @@ function LoginCtrl($scope,$firebaseAuth){
             });
     };
     
+    
+    
 };

@@ -2,9 +2,9 @@
 
 var app=angular.module('ngAdminCart',['ui.bootstrap','ui.router','firebase']);
 
-app.config(RouteConfig);
-app.config(firebaseConfig);
 
+app.config(firebaseConfig);
+app.config(RouteConfig);
 function firebaseConfig(){
     console.log('firebase configurate');
    var config = {
@@ -26,6 +26,7 @@ function RouteConfig($stateProvider,$urlRouterProvider){
         .state('dash',{
         url:'/dash',
         templateUrl:'views/dashboard.html'
+        
     })
     .state('pending',{
         url:'/pending',

@@ -1,73 +1,51 @@
-var app=angular.module('ngCart', ['ui.router','ngAnimate', 'ngSanitize', 'ui.bootstrap']);
+var app=angular.module('ngCart', ['ui.router','ui.bootstrap','firebase']);
+app.config(firebaseConfig);
+function firebaseConfig(){
+    console.log('firebase configurate');
+   var config = {
+    apiKey: "AIzaSyBzmIl7fq6wloZnRS9pUyuFcrHuljTqgRA",
+    authDomain: "testproject-4f2e6.firebaseapp.com",
+    databaseURL: "https://testproject-4f2e6.firebaseio.com",
+    storageBucket: "testproject-4f2e6.appspot.com",
+    messagingSenderId: "390674072393"
+  };
+  firebase.initializeApp(config);
+
+}; 
 app.config(function($stateProvider, $urlRouterProvider) {
-     $urlRouterProvider.otherwise("/buy");
+     $urlRouterProvider.otherwise("/login");
     $stateProvider
     .state('buy', {
       url: "/buy",
       templateUrl: "views/buy.html"
     })
-    .state('admin', {
-      url: "/admin",
-      templateUrl: "views/admin.html"
+    .state('cart', {
+      url: "/cart",
+      templateUrl: "views/cart.html"
+    })
+    .state('account', {
+      url: "/account",
+      templateUrl: "views/account.html"
+    })
+    .state('orders', {
+      url: "/orders",
+      templateUrl: "views/orders.html"
+    })
+    .state('smarbox', {
+      url: "/smarbox",
+      templateUrl: "views/smarbox.html"
+    })
+    .state('login', {
+      url: "/buy",
+      templateUrl: "views/buy.html"
     });
     
 });
 
 
-app.controller('CarouselDemoCtrl', function ($scope) {
-  $scope.myInterval = 5000;
-  $scope.noWrapSlides = false;
-  $scope.active = 0;
-  var slides = $scope.slides = [];
-  var currIndex = 0;
-
-  $scope.addSlide = function() {
-    var newWidth = 600 + slides.length + 1;
-    slides.push({
-      image: 'https://dummyimage.com/1200x350/000/fff&text=Slide',
-      text: ['Nice image','Awesome photograph','That is so cool','I love that'][slides.length % 4],
-      id: currIndex++
-    });
-  };
-
-  $scope.randomize = function() {
-    var indexes = generateIndexesArray();
-    assignNewIndexesToSlides(indexes);
-  };
-
-  for (var i = 0; i < 4; i++) {
-    $scope.addSlide();
-  }
-
-  // Randomize logic below
-
-  function assignNewIndexesToSlides(indexes) {
-    for (var i = 0, l = slides.length; i < l; i++) {
-      slides[i].id = indexes.pop();
-    }
-  }
-
-  function generateIndexesArray() {
-    var indexes = [];
-    for (var i = 0; i < currIndex; ++i) {
-      indexes[i] = i;
-    }
-    return shuffle(indexes);
-  }
-
-  // http://stackoverflow.com/questions/962802#962890
-  function shuffle(array) {
-    var tmp, current, top = array.length;
-
-    if (top) {
-      while (--top) {
-        current = Math.floor(Math.random() * (top + 1));
-        tmp = array[current];
-        array[current] = array[top];
-        array[top] = tmp;
-      }
-    }
-
-    return array;
-  }
-});
+app.controller('navCtrl',NavCtrl);
+NavCtrl.$inject=['$scope'];
+    
+function NavCtrl($scope){
+  console.log('NavCtrl') ; 
+};
